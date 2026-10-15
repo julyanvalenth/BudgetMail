@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: budgetmail
+      POSTGRES_PASSWORD: budgetmail_dev_password
+      POSTGRES_DB: budgetmail
+    ports:
+      # Host port 5434: native PostgreSQL services on this machine already occupy 5432 (v17) and 5433 (v18)
+      - "5434:5432"
+    volumes:
+      - budgetmail_pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - budgetmail_redis_data:/data
+
+volumes:
+  budgetmail_pg_data:
+  budgetmail_redis_data:

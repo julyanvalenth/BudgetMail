@@ -1,0 +1,11 @@
+dist
+.expo
+node_modules
+pnpm-lock.yaml
+
+# Prose/content docs and agent instructions - not code, don't auto-reformat
+docs/
+CLAUDE.md
+**/CLAUDE.md
+**/AGENTS.md
+.claude/
